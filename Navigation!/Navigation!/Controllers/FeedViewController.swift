@@ -19,6 +19,8 @@ class FeedViewController: UIViewController {
         postButton.translatesAutoresizingMaskIntoConstraints = false
         postButton.backgroundColor = .systemCyan
         postButton.layer.cornerRadius = 14
+        postButton.layer.shadowOpacity = 0.3
+        postButton.layer.shadowOffset = CGSize(width: 5, height: 8)
         postButton.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .bold)
         postButton.titleLabel?.textColor = .black
         postButton.setTitle("Перейти на пост", for: .normal)

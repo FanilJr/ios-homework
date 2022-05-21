@@ -8,10 +8,22 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
+    
+    var profil = ProfileHeaderView()
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .lightGray
+        
+        profil = ProfileHeaderView(frame: CGRect.zero)
+        
 
+        
+        view.backgroundColor = .lightGray
+        view.addSubview(profil)
+
+  
     }
+    
 }
