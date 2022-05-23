@@ -21,6 +21,8 @@ class PostViewController: UIViewController {
 
     }
     
+   
+    
     @objc func tapButton() {
         let infoViewController = InfoViewController()
         
