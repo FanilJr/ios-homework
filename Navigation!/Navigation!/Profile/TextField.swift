@@ -8,6 +8,5 @@
 import UIKit
 
 class TextField: UITextField {
-    private var statusText: String = "hui"
-
+    
 }

@@ -14,18 +14,20 @@ class FeedViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .lightGray
         
+        self.view.backgroundColor = .lightGray
         
+    
         let postButton = UIButton()
         postButton.translatesAutoresizingMaskIntoConstraints = false
         postButton.backgroundColor = .systemBlue
         postButton.layer.cornerRadius = 14
-        postButton.layer.shadowOpacity = 0.3
+        postButton.layer.shadowOpacity = 0.7
+        postButton.layer.shadowRadius = 4
         postButton.layer.shadowOffset = CGSize(width: 5, height: 8)
         postButton.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .bold)
         postButton.setTitle("Перейти на пост", for: .normal)
-        postButton.setTitleColor(.black, for: .normal)
+        postButton.setTitleColor(.white, for: .normal)
         postButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         
         view.addSubview(postButton)

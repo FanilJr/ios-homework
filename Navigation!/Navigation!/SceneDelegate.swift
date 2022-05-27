@@ -44,7 +44,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
         tabBarController.viewControllers = [createFeedViewController(),createProfileViewController()]
         
-        
         return tabBarController
         
     }
@@ -64,7 +63,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         profileViewController.title = "Профиль"
         profileViewController.tabBarItem = UITabBarItem(title: "Профиль", image: UIImage(systemName: "person.circle"), tag: 1)
         
-
         return UINavigationController(rootViewController: profileViewController)
     }
 

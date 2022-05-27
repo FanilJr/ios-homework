@@ -16,7 +16,8 @@ class ProfileHeaderView: UIView {
     var text: UILabel!
     var knopka: UIButton!
     
-
+    private var statusText: String = ""
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -45,7 +46,7 @@ class ProfileHeaderView: UIView {
         knopka.backgroundColor = .systemBlue
         knopka.layer.cornerRadius = 14
         knopka.layer.shadowOpacity = 0.7
-        knopka.setTitle("Show status", for: .normal)
+        knopka.setTitle("Set status", for: .normal)
         knopka.layer.shadowRadius = 4
         knopka.layer.shadowOffset = CGSize(width: 4, height: 4)
         knopka.translatesAutoresizingMaskIntoConstraints = false
@@ -60,8 +61,21 @@ class ProfileHeaderView: UIView {
         text.translatesAutoresizingMaskIntoConstraints = false
         
         addSubview(text)
+        textfield.text = ""
+        textfield.placeholder = "Enter text"
+        textfield.backgroundColor = .white
+        textfield.layer.cornerRadius = 12
+        textfield.layer.borderWidth = 1
+        textfield.layer.borderColor = CGColor(genericCMYKCyan: 10, magenta: 10, yellow: 10, black: 10, alpha: 10)
+        textfield.textColor = .black
+        textfield.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         
+        textfield.leftViewMode = .always
+        textfield.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+        textfield.translatesAutoresizingMaskIntoConstraints = false
+        textfield.addTarget(self, action: #selector(textChanged), for: .editingChanged)
         
+        addSubview(textfield)
         
     }
     
@@ -70,16 +84,27 @@ class ProfileHeaderView: UIView {
         
     }
     
+    @objc func textChanged(_ textField: UITextField) {
+        
+            statusText = textfield.text!
+        
+    }
+    
     @objc func buttonPresset() {
+        
         let bounds = knopka.bounds
         
         UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.2, initialSpringVelocity: 10, options: .curveEaseInOut) {
             self.knopka.bounds = CGRect(x: bounds.origin.x - 50, y: bounds.origin.y, width: bounds.width + 50, height: bounds.height)
             self.knopka.titleLabel?.bounds = CGRect(x: bounds.origin.x - 30, y: bounds.height / 2, width: bounds.width + 60, height: 0)
         }
-        print(" статус у пользователя \(zagolovok.text!) - \(text.text!)")
         
+        text.text = statusText
+        
+        if text.text == "" {
+            print("у пользователя \(zagolovok.text!) - нет статуса")
+        } else {
+        print("статус у пользователя \(zagolovok.text!) - \(text.text!)")
+        }
     }
-    
- 
 }
