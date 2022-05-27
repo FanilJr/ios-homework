@@ -61,6 +61,7 @@ class ProfileViewController: UIViewController {
         }
         
        func createPhotoAnchor() {
+           
            profil.photo.leftAnchor.constraint(equalTo: profil.safeAreaLayoutGuide.leftAnchor, constant: 16).isActive = true
             profil.photo.topAnchor.constraint(equalTo: profil.topAnchor, constant: 16).isActive = true
             profil.photo.widthAnchor.constraint(equalToConstant: 120).isActive = true
@@ -68,6 +69,7 @@ class ProfileViewController: UIViewController {
         }
         
         func createButtonAnchor() {
+            
             profil.knopka.leftAnchor.constraint(equalTo: profil.safeAreaLayoutGuide.leftAnchor, constant: 16).isActive = true
             profil.knopka.rightAnchor.constraint(equalTo: profil.safeAreaLayoutGuide.rightAnchor, constant: -16).isActive = true
            profil.knopka.topAnchor.constraint(equalTo: profil.photo.bottomAnchor, constant: 16).isActive = true
@@ -75,22 +77,18 @@ class ProfileViewController: UIViewController {
         }
         
         func createLabelAnchor() {
-           // profil.zagolovok.centerXAnchor.constraint(equalTo: profil.centerXAnchor).isActive = true
+            
             profil.zagolovok.leftAnchor.constraint(equalTo: profil.photo.rightAnchor, constant: 15).isActive = true
             profil.zagolovok.topAnchor.constraint(equalTo: profil.topAnchor, constant: 27).isActive = true
             profil.zagolovok.heightAnchor.constraint(equalToConstant: 50).isActive = true
         }
         
         func createTextAnchor() {
-          //  profil.text.centerXAnchor.constraint(equalTo: profil.centerXAnchor).isActive = true
+            
             profil.text.leftAnchor.constraint(equalTo: profil.photo.rightAnchor, constant: 15).isActive = true
             profil.text.bottomAnchor.constraint(equalTo: profil.knopka.topAnchor,constant: -34).isActive = true
         }
 
-
-        print("привет это фрэйм вью\(view.frame)")
-        NSLog("размер = \(self.view.bounds)")
-        print("это профиля фрейм \(profil.frame)")
         view.addSubview(profil)
         createViewContstraints()
         createPhotoAnchor()
@@ -99,7 +97,7 @@ class ProfileViewController: UIViewController {
         createTextAnchor()
         
         
-       // view.addSubview(profil)
+
         
         
     }

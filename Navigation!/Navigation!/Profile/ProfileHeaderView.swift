@@ -27,7 +27,6 @@ class ProfileHeaderView: UIView {
         photo.layer.borderColor = CGColor(gray: 5, alpha: 5)
         photo.translatesAutoresizingMaskIntoConstraints = false
         
-        
         addSubview(photo)
         
         zagolovok = UILabel()
@@ -47,10 +46,11 @@ class ProfileHeaderView: UIView {
         knopka.layer.shadowRadius = 4
         knopka.layer.shadowOffset = CGSize(width: 4, height: 4)
         knopka.translatesAutoresizingMaskIntoConstraints = false
+        knopka.addTarget(self, action: #selector(buttonPresset), for: .touchUpInside)
         
         addSubview(knopka)
         
-        text = UILabel()//frame: CGRect(x: 100, y: 100, width: 300, height: 100))
+        text = UILabel()
         text.text = "Waiting for something..."
         text.textColor = .gray
         text.font = UIFont.systemFont(ofSize: 14, weight: .regular)
@@ -64,6 +64,11 @@ class ProfileHeaderView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+        
+    }
+    
+    @objc func buttonPresset() {
+        print(" статус у пользователя \(zagolovok.text!) - \(text.text!)")
         
     }
     
