@@ -19,7 +19,7 @@ class FeedViewController: UIViewController {
         
         let postButton = UIButton()
         postButton.translatesAutoresizingMaskIntoConstraints = false
-        postButton.backgroundColor = .systemCyan
+        postButton.backgroundColor = .systemBlue
         postButton.layer.cornerRadius = 14
         postButton.layer.shadowOpacity = 0.3
         postButton.layer.shadowOffset = CGSize(width: 5, height: 8)

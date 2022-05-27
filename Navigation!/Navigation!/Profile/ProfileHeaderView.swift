@@ -9,67 +9,56 @@ import UIKit
 
 class ProfileHeaderView: UIView {
     
-    
- 
     var photo: UIImageView!
     var zagolovok: UILabel!
-    var text: UITextView!
+    var text: UILabel!
     var knopka: UIButton!
     
-   // let screenSize = UIScreen.main.bounds
+
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        // PHOTO
-        photo = UIImageView(frame: CGRect(x: 5, y: 100, width: 150, height: 150))
-        photo.backgroundColor = .red
+        photo = UIImageView(frame: CGRect(x: 16, y: 16, width: 120, height: 120))
+        photo.backgroundColor = .black
+        //photo.image = UIImage(named: "1")
         photo.layer.cornerRadius = photo.frame.width / 2
+        photo.layer.borderWidth = 3
+        photo.layer.borderColor = CGColor(gray: 5, alpha: 5)
         photo.translatesAutoresizingMaskIntoConstraints = false
+        
+        
         addSubview(photo)
-        print("Это размер photo \(photo.frame)")
-        
-        // BUTTON
-        knopka = UIButton()
-        knopka.backgroundColor = .black
-        knopka.setTitle("Najmi", for: .normal)
-        knopka.setTitleColor(.red, for: .normal)
-        knopka.titleLabel?.textColor = .white
-        knopka.translatesAutoresizingMaskIntoConstraints = false
-        print("это размер кнопки \(knopka.frame)")
-        knopka.leftAnchor.constraint(equalTo: knopka.leftAnchor).isActive = true
-        knopka.heightAnchor.constraint(equalToConstant: 300).isActive = true
-       // knopka.rightAnchor.constraint(equalTo: photo.rightAnchor).isActive = true
-        knopka.widthAnchor.constraint(equalToConstant: 300).isActive = true
-        //knopka.heightAnchor.constraint(equalToConstant: 300)
-
-        knopka.layer.cornerRadius = 14
-        addSubview(knopka)
-        
-        // TEXT
-        text = UITextView()
-        
-        text.text = "hell0"
-        text.textColor = .black
-        
-        text.frame = CGRect(x: 150, y: 300, width: 50, height: 20)
-        text.translatesAutoresizingMaskIntoConstraints = false
-        text.layer.cornerRadius = 14
-        addSubview(text)
-        
-        // ZAGOLOVOK
         
         zagolovok = UILabel()
-        zagolovok.textColor = .black
+        zagolovok.text = "Fanil_JR"
         zagolovok.font = UIFont.systemFont(ofSize: 18, weight: .bold)
-        zagolovok.text = "Hipster"
+        zagolovok.tintColor = .black
+        zagolovok.textColor = .black
         zagolovok.translatesAutoresizingMaskIntoConstraints = false
         
-        
-       // zagolovok.frame = CGRect(x: 200, y: 250, width: 200, height: 200)
-        
-        zagolovok.layer.cornerRadius = 14
         addSubview(zagolovok)
+        
+        knopka = UIButton()
+        knopka.backgroundColor = .systemBlue
+        knopka.layer.cornerRadius = 14
+        knopka.layer.shadowOpacity = 0.7
+        knopka.setTitle("Show status", for: .normal)
+        knopka.layer.shadowRadius = 4
+        knopka.layer.shadowOffset = CGSize(width: 4, height: 4)
+        knopka.translatesAutoresizingMaskIntoConstraints = false
+        
+        addSubview(knopka)
+        
+        text = UILabel()//frame: CGRect(x: 100, y: 100, width: 300, height: 100))
+        text.text = "Waiting for something..."
+        text.textColor = .gray
+        text.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        text.translatesAutoresizingMaskIntoConstraints = false
+        
+        addSubview(text)
+        
+        
         
     }
     
