@@ -11,7 +11,9 @@ class FeedViewController: UIViewController {
     
     
     var post = Post(title: "Мой пост")
+    
     let postButton: UIButton = {
+        
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .systemBlue
@@ -23,7 +25,8 @@ class FeedViewController: UIViewController {
         button.setTitle("Перейти на пост", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-    return button
+        return button
+        
     }()
     
     @objc private func buttonAction() {

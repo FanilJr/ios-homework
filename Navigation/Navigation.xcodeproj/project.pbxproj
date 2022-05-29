@@ -18,7 +18,6 @@
 		841CFCC92837FC6300E5EDCF /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841CFCC82837FC6300E5EDCF /* InfoViewController.swift */; };
 		841CFCCB2837FC8900E5EDCF /* UITabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841CFCCA2837FC8900E5EDCF /* UITabBar.swift */; };
 		841CFCD02838042500E5EDCF /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841CFCCF2838042500E5EDCF /* ProfileHeaderView.swift */; };
-		84ACA5B82840DBBD00CEE3C1 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACA5B72840DBBC00CEE3C1 /* TextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +34,6 @@
 		841CFCC82837FC6300E5EDCF /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		841CFCCA2837FC8900E5EDCF /* UITabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITabBar.swift; sourceTree = "<group>"; };
 		841CFCCF2838042500E5EDCF /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
-		84ACA5B72840DBBC00CEE3C1 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,7 +102,6 @@
 			children = (
 				841CFCC42837FC3300E5EDCF /* ProfileViewController.swift */,
 				841CFCCF2838042500E5EDCF /* ProfileHeaderView.swift */,
-				84ACA5B72840DBBC00CEE3C1 /* TextField.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -180,7 +177,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				841CFCC52837FC3300E5EDCF /* ProfileViewController.swift in Sources */,
-				84ACA5B82840DBBD00CEE3C1 /* TextField.swift in Sources */,
 				841CFCC72837FC4300E5EDCF /* PostViewController.swift in Sources */,
 				841CFCAB2837CC9C00E5EDCF /* AppDelegate.swift in Sources */,
 				841CFCC22837FC0700E5EDCF /* FeedViewController.swift in Sources */,

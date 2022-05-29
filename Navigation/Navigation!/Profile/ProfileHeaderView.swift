@@ -9,8 +9,12 @@ import UIKit
 
 class ProfileHeaderView: UIView {
     
-    var textfield: TextField = {
-        var textfields = TextField()
+    
+    private var statusText: String = ""
+    
+    var textfield: UITextField = {
+        
+        var textfields = UITextField()
         textfields.placeholder = "Enter text"
         textfields.backgroundColor = .white
         textfields.layer.cornerRadius = 12
@@ -23,9 +27,11 @@ class ProfileHeaderView: UIView {
         textfields.translatesAutoresizingMaskIntoConstraints = false
         textfields.addTarget(self, action: #selector(textChanged), for: .editingChanged)
         return textfields
+        
     }()
-    
-    var photo: UIImageView = {
+  
+    var myPhoto: UIImageView = {
+        
         let fotka = UIImageView()
         fotka.clipsToBounds = true
         fotka.frame = CGRect(x: 16, y: 16, width: 120, height: 120)
@@ -37,8 +43,8 @@ class ProfileHeaderView: UIView {
         return fotka
     }()
         
-    
-    var zagolovok: UILabel = {
+    var titleName: UILabel = {
+        
         let name = UILabel()
         name.text = "Fanil_JR"
         name.font = UIFont.systemFont(ofSize: 18, weight: .bold)
@@ -48,7 +54,8 @@ class ProfileHeaderView: UIView {
         return name
     }()
     
-    var text: UILabel = {
+    var textStatus: UILabel = {
+        
         let opisanie = UILabel()
         opisanie.text = "Waiting for something..."
         opisanie.textColor = .gray
@@ -57,7 +64,8 @@ class ProfileHeaderView: UIView {
         return opisanie
     }()
     
-    var knopka: UIButton = {
+    var myButton: UIButton = {
+        
         var button = UIButton()
         button.backgroundColor = .systemBlue
         button.layer.cornerRadius = 14
@@ -70,69 +78,71 @@ class ProfileHeaderView: UIView {
         return button
     }()
     
-    private var statusText: String = ""
-    
     func addElements() {
         
-        addSubview(photo)
-        addSubview(knopka)
-        addSubview(zagolovok)
-        addSubview(text)
+        addSubview(myPhoto)
+        addSubview(myButton)
+        addSubview(titleName)
+        addSubview(textStatus)
         addSubview(textfield)
     }
     
     func anchors() {
         
-        photo.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 16).isActive = true
-        photo.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16).isActive = true
-        photo.widthAnchor.constraint(equalToConstant: 120).isActive = true
-        photo.heightAnchor.constraint(equalToConstant: 120).isActive = true
+        myPhoto.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 16).isActive = true
+        myPhoto.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16).isActive = true
+        myPhoto.widthAnchor.constraint(equalToConstant: 120).isActive = true
+        myPhoto.heightAnchor.constraint(equalToConstant: 120).isActive = true
         
-        knopka.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 16).isActive = true
-        knopka.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -16).isActive = true
-        knopka.topAnchor.constraint(equalTo: textfield.bottomAnchor, constant: 16).isActive = true
-        knopka.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        myButton.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 16).isActive = true
+        myButton.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -16).isActive = true
+        myButton.topAnchor.constraint(equalTo: textfield.bottomAnchor, constant: 16).isActive = true
+        myButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
-        zagolovok.leftAnchor.constraint(equalTo: photo.rightAnchor, constant: 15).isActive = true
-        zagolovok.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 27).isActive = true
-        zagolovok.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        titleName.leftAnchor.constraint(equalTo: myPhoto.rightAnchor, constant: 15).isActive = true
+        titleName.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 27).isActive = true
+        titleName.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
-        text.leftAnchor.constraint(equalTo: photo.rightAnchor, constant: 15).isActive = true
-        text.topAnchor.constraint(equalTo: zagolovok.bottomAnchor, constant: 16).isActive = true
+        textStatus.leftAnchor.constraint(equalTo: myPhoto.rightAnchor, constant: 15).isActive = true
+        textStatus.topAnchor.constraint(equalTo: titleName.bottomAnchor, constant: 16).isActive = true
         
-        textfield.leftAnchor.constraint(equalTo: photo.rightAnchor, constant: 15).isActive = true
+        textfield.leftAnchor.constraint(equalTo: myPhoto.rightAnchor, constant: 15).isActive = true
         textfield.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant:  -16).isActive = true
-      textfield.heightAnchor.constraint(equalToConstant: 40).isActive = true
-       textfield.topAnchor.constraint(equalTo: photo.bottomAnchor,constant: -16).isActive = true
+        textfield.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        textfield.topAnchor.constraint(equalTo: myPhoto.bottomAnchor,constant: -16).isActive = true
         
     }
+    
     @objc func textChanged(_ textField: UITextField) {
         
-            statusText = textfield.text!
+        statusText = textfield.text!
         
     }
+    
     @objc func buttonPresset() {
         
-        let bounds = knopka.bounds
-        let bonds = text.bounds
+        let bounds = myButton.bounds
+        let bonds = textStatus.bounds
         
         UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 2, initialSpringVelocity: 1, options: .curveLinear) {
-            self.knopka.bounds = CGRect(x: bounds.origin.x - 30, y: bounds.origin.y, width: bounds.width + 30, height: bounds.height + 10)
-            self.knopka.titleLabel?.bounds = CGRect(x: bounds.origin.x, y: bounds.origin.y, width: bounds.width + 100, height: bounds.height)
-            self.text.bounds = CGRect(x: bonds.origin.x, y: bonds.origin.y, width: bonds.width + 50, height: bonds.height)
+            self.myButton.bounds = CGRect(x: bounds.origin.x - 30, y: bounds.origin.y, width: bounds.width + 30, height: bounds.height + 10)
+            self.myButton.titleLabel?.bounds = CGRect(x: bounds.origin.x, y: bounds.origin.y, width: bounds.width + 100, height: bounds.height)
+            self.textStatus.bounds = CGRect(x: bonds.origin.x, y: bonds.origin.y, width: bonds.width + 50, height: bonds.height)
         }
             
-        text.text = statusText
+        textStatus.text = statusText
         textfield.text = ""
+        
         if textfield.text == "" {
             statusText = ""
             
         }
         
-        if text.text == "" {
-            print("у пользователя \(zagolovok.text!) - пустой статус")
+        if textStatus.text == "" {
+            print("у пользователя \(titleName.text!) - пустой статус")
+            
         } else {
-        print("статус у пользователя \(zagolovok.text!) - \(text.text!)")
+            print("статус у пользователя \(titleName.text!) - \(textStatus.text!)")
             
         }
     }
