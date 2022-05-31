@@ -9,6 +9,7 @@ import UIKit
 
 class InfoViewController: UIViewController {
     
+    /// Создание кпоки алерта
     let alertButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -28,6 +29,7 @@ class InfoViewController: UIViewController {
         alertConstr()
     }
     
+    /// Метод вызова алерта
         @objc func buttonAlert() {
             let alert = UIAlertController(title: "Внимание", message: "Редактирование запрещено", preferredStyle: .alert)
            let alertOK = UIAlertAction(title: "OK", style: .default, handler: nil)
@@ -37,6 +39,8 @@ class InfoViewController: UIViewController {
             self.present(alert, animated: true, completion: nil)
             print("проверяем алерт")
     }
+    
+    /// Установка констрейнтов кнопки
         func alertConstr() {
         NSLayoutConstraint.activate([alertButton.widthAnchor.constraint(equalToConstant: 150), alertButton.heightAnchor.constraint(equalToConstant: 50),
         alertButton.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),

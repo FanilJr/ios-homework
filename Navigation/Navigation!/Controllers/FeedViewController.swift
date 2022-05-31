@@ -12,6 +12,7 @@ class FeedViewController: UIViewController {
     
     var post = Post(title: "Мой пост")
     
+    /// Кнопка для перехода на пост
     let postButton: UIButton = {
         
         let button = UIButton()
@@ -29,14 +30,15 @@ class FeedViewController: UIViewController {
         
     }()
     
+    /// Метод перехода на PostViewController
     @objc private func buttonAction() {
         let postViewController = PostViewController()
         postViewController.titlePost = post.title
         
         self.navigationController?.pushViewController(postViewController, animated: true)
-        
     }
     
+    /// Установка констрейнтов кнопки
     func postButtonConstr() {
         NSLayoutConstraint.activate([postButton.widthAnchor.constraint(equalToConstant: 300), postButton.heightAnchor.constraint(equalToConstant: 300),
         postButton.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
