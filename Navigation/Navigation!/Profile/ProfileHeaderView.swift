@@ -12,6 +12,7 @@ class ProfileHeaderView: UIView {
     
     private var statusText: String = ""
     
+    // MARK: строка ввода статуса
     var textfield: UITextField = {
         
         var textfields = UITextField()
@@ -30,6 +31,7 @@ class ProfileHeaderView: UIView {
         
     }()
   
+    // MARK: Фотография
     var myPhoto: UIImageView = {
         
         let fotka = UIImageView()
@@ -43,6 +45,7 @@ class ProfileHeaderView: UIView {
         return fotka
     }()
         
+    // MARK: Имя профиля
     var titleName: UILabel = {
         
         let name = UILabel()
@@ -54,6 +57,7 @@ class ProfileHeaderView: UIView {
         return name
     }()
     
+    // MARK: Статус
     var textStatus: UILabel = {
         
         let opisanie = UILabel()
@@ -64,6 +68,7 @@ class ProfileHeaderView: UIView {
         return opisanie
     }()
     
+    // MARK: Кнопка Set status
     var myButton: UIButton = {
         
         var button = UIButton()
@@ -78,6 +83,7 @@ class ProfileHeaderView: UIView {
         return button
     }()
     
+    // MARK: Добавляем элементы на view
     func addElements() {
         
         addSubview(myPhoto)
@@ -87,6 +93,7 @@ class ProfileHeaderView: UIView {
         addSubview(textfield)
     }
     
+    // MARK: Настраиваем констрейнты
     func anchors() {
         
         myPhoto.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 16).isActive = true
@@ -113,23 +120,27 @@ class ProfileHeaderView: UIView {
         
     }
     
+    // MARK: Метод измненения статуса
     @objc func textChanged(_ textField: UITextField) {
         
         statusText = textfield.text!
         
     }
     
+    // MARK: Нажатие кнопки с анимацией и сброс строки ввода статуса на placeholder "Enter text"
     @objc func buttonPresset() {
         
         let bounds = myButton.bounds
         let bonds = textStatus.bounds
         
+        /// анимация:
         UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 2, initialSpringVelocity: 1, options: .curveLinear) {
             self.myButton.bounds = CGRect(x: bounds.origin.x - 30, y: bounds.origin.y, width: bounds.width + 30, height: bounds.height + 10)
             self.myButton.titleLabel?.bounds = CGRect(x: bounds.origin.x, y: bounds.origin.y, width: bounds.width + 100, height: bounds.height)
             self.textStatus.bounds = CGRect(x: bonds.origin.x, y: bonds.origin.y, width: bonds.width + 50, height: bonds.height)
         }
-            
+        
+        /// установка статуса и сброс строки ввода статуса
         textStatus.text = statusText
         textfield.text = ""
         
@@ -138,6 +149,7 @@ class ProfileHeaderView: UIView {
             
         }
         
+        /// проверка статуса пользователя
         if textStatus.text == "" {
             print("у пользователя \(titleName.text!) - пустой статус")
             

@@ -37,7 +37,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func createTabBarController() -> UITabBarController {
         
         let tabBarController = UITabBarController()
-     // UITabBar.appearance().backgroundColor     = .red
         UITabBar.appearance().tintColor = .black
         UITabBar.setTransparentTabbar()
         UIBarButtonItem.appearance().tintColor = .black
