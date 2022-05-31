@@ -14,10 +14,24 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .gray
+        profil.backgroundColor = .lightGray
+        view.addSubview(profil)
         
+       // profil.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        profil.translatesAutoresizingMaskIntoConstraints = false
+        profil.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
+        profil.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
+        profil.heightAnchor.constraint(equalToConstant: 220).isActive = true
+        profil.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         /// Кнопка в навигейшн бар - создания поста
         let barButtonItem = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(common))
         navigationItem.rightBarButtonItem = barButtonItem
+        
+        profil.backgroundColor = .lightGray
+        profil.addElements()
+        profil.anchors()
+        view.addSubview(profil)
     }
         /// вызов алерта
     @objc func common() {
@@ -30,15 +44,8 @@ class ProfileViewController: UIViewController {
         
     }
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
+   override func viewWillLayoutSubviews() {
+       super.viewWillLayoutSubviews()
 
-        
-        profil.backgroundColor = .lightGray
-        profil.frame = view.frame
-        profil.addElements()
-        profil.anchors()
-        view.addSubview(profil)
-
-    }
+   }
 }

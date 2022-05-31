@@ -10,6 +10,7 @@ import UIKit
 class ProfileHeaderView: UIView {
     
     
+    
     private var statusText: String = ""
     
     // MARK: строка ввода статуса
@@ -36,7 +37,7 @@ class ProfileHeaderView: UIView {
         
         let fotka = UIImageView()
         fotka.clipsToBounds = true
-        fotka.frame = CGRect(x: 16, y: 16, width: 120, height: 120)
+        fotka.frame = CGRect(x: 16, y: 16, width: 100, height: 100)
         fotka.image = UIImage(named: "1")
         fotka.layer.cornerRadius = fotka.frame.width / 2
         fotka.layer.borderWidth = 3
@@ -98,8 +99,8 @@ class ProfileHeaderView: UIView {
         
         myPhoto.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 16).isActive = true
         myPhoto.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16).isActive = true
-        myPhoto.widthAnchor.constraint(equalToConstant: 120).isActive = true
-        myPhoto.heightAnchor.constraint(equalToConstant: 120).isActive = true
+        myPhoto.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        myPhoto.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
         myButton.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 16).isActive = true
         myButton.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -16).isActive = true
@@ -107,7 +108,7 @@ class ProfileHeaderView: UIView {
         myButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         titleName.leftAnchor.constraint(equalTo: myPhoto.rightAnchor, constant: 15).isActive = true
-        titleName.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 27).isActive = true
+        titleName.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16).isActive = true
         titleName.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         textStatus.leftAnchor.constraint(equalTo: myPhoto.rightAnchor, constant: 15).isActive = true
@@ -116,7 +117,7 @@ class ProfileHeaderView: UIView {
         textfield.leftAnchor.constraint(equalTo: myPhoto.rightAnchor, constant: 15).isActive = true
         textfield.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant:  -16).isActive = true
         textfield.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        textfield.topAnchor.constraint(equalTo: myPhoto.bottomAnchor,constant: -16).isActive = true
+        textfield.topAnchor.constraint(equalTo: myPhoto.bottomAnchor,constant: -15).isActive = true
         
     }
     
