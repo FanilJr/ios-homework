@@ -13,6 +13,23 @@ class ProfileHeaderView: UIView {
     
     private var statusText: String = ""
     
+    /*var newButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .systemRed
+        button.layer.cornerRadius = 14
+        button.layer.shadowOpacity = 0.7
+        button.setTitle("Change title", for: .normal)
+        button.layer.shadowRadius = 4
+        button.layer.shadowOffset = CGSize(width: 4, height: 4)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(changeButton), for: .touchUpInside)
+        return button
+    }()
+    
+    @objc func changeButton() {
+        titleName.text = "hello"
+    }*/
+    
     // MARK: строка ввода статуса
     var textfield: UITextField = {
         
@@ -92,6 +109,7 @@ class ProfileHeaderView: UIView {
         addSubview(titleName)
         addSubview(textStatus)
         addSubview(textfield)
+       // addSubview(newButton)
     }
     
     // MARK: Настраиваем констрейнты
@@ -119,6 +137,10 @@ class ProfileHeaderView: UIView {
         textfield.heightAnchor.constraint(equalToConstant: 40).isActive = true
         textfield.topAnchor.constraint(equalTo: myPhoto.bottomAnchor,constant: -15).isActive = true
         
+       // newButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 0).isActive = true
+       // newButton.rightAnchor.constraint(equalTo: rightAnchor, constant: 0).isActive = true
+      //  newButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
+      //  newButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
     }
     
     // MARK: Метод измненения статуса
