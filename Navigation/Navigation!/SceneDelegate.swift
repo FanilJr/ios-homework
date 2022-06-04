@@ -41,7 +41,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         UITabBar.setTransparentTabbar()
         UIBarButtonItem.appearance().tintColor = .black
     
-        tabBarController.viewControllers = [createFeedViewController(), createProfileViewController()]
+        tabBarController.viewControllers = [createFeedViewController(), createLoginViewController()]
         
         return tabBarController
         

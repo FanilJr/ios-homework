@@ -153,7 +153,7 @@ class ProfileHeaderView: UIView {
     // MARK: Метод измненения статуса
     @objc func textChanged(_ textField: UITextField) {
         
-        statusText = textfield.text!
+        statusText = textfield.text ?? "Empty"
         
     }
     
