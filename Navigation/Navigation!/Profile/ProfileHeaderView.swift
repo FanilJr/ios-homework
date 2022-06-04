@@ -102,6 +102,17 @@ class ProfileHeaderView: UIView {
         return button
         
     }()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        addElementAndAnchors()
+    }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
 
     // MARK: Добавляем элементы на view и настраиваем констрейнты
