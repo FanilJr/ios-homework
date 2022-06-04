@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		841A33F92848D83B00EDC31F /* ColorSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841A33F82848D83A00EDC31F /* ColorSet.swift */; };
+		841A33FB2848DA1700EDC31F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841A33FA2848DA1700EDC31F /* LoginViewController.swift */; };
 		841CFCAB2837CC9C00E5EDCF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841CFCAA2837CC9C00E5EDCF /* AppDelegate.swift */; };
 		841CFCAD2837CC9C00E5EDCF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841CFCAC2837CC9C00E5EDCF /* SceneDelegate.swift */; };
 		841CFCB42837CCA400E5EDCF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 841CFCB32837CCA400E5EDCF /* Assets.xcassets */; };
@@ -21,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		841A33F82848D83A00EDC31F /* ColorSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSet.swift; sourceTree = "<group>"; };
+		841A33FA2848DA1700EDC31F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		841CFCA72837CC9C00E5EDCF /* Navigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Navigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		841CFCAA2837CC9C00E5EDCF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		841CFCAC2837CC9C00E5EDCF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -70,6 +74,7 @@
 				841CFCBE2837FBB700E5EDCF /* Data */,
 				841CFCC32837FC1400E5EDCF /* Controllers */,
 				841CFCAA2837CC9C00E5EDCF /* AppDelegate.swift */,
+				841A33F82848D83A00EDC31F /* ColorSet.swift */,
 				841CFCAC2837CC9C00E5EDCF /* SceneDelegate.swift */,
 				841CFCCA2837FC8900E5EDCF /* UITabBar.swift */,
 				841CFCB32837CCA400E5EDCF /* Assets.xcassets */,
@@ -100,6 +105,7 @@
 		841CFCCC283803C700E5EDCF /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				841A33FA2848DA1700EDC31F /* LoginViewController.swift */,
 				841CFCC42837FC3300E5EDCF /* ProfileViewController.swift */,
 				841CFCCF2838042500E5EDCF /* ProfileHeaderView.swift */,
 			);
@@ -180,11 +186,13 @@
 				841CFCC72837FC4300E5EDCF /* PostViewController.swift in Sources */,
 				841CFCAB2837CC9C00E5EDCF /* AppDelegate.swift in Sources */,
 				841CFCC22837FC0700E5EDCF /* FeedViewController.swift in Sources */,
+				841A33F92848D83B00EDC31F /* ColorSet.swift in Sources */,
 				841CFCD02838042500E5EDCF /* ProfileHeaderView.swift in Sources */,
 				841CFCAD2837CC9C00E5EDCF /* SceneDelegate.swift in Sources */,
 				841CFCC92837FC6300E5EDCF /* InfoViewController.swift in Sources */,
 				841CFCC02837FBCE00E5EDCF /* Post.swift in Sources */,
 				841CFCCB2837FC8900E5EDCF /* UITabBar.swift in Sources */,
+				841A33FB2848DA1700EDC31F /* LoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

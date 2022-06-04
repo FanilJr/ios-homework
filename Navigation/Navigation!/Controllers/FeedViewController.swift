@@ -19,6 +19,8 @@ class FeedViewController: UIViewController {
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .systemBlue
         button.layer.cornerRadius = 14
+        button.layer.shadowOpacity = 0.7
+        button.layer.shadowOffset = CGSize(width: 4, height: 4)
         button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         return button
     }()
@@ -29,6 +31,8 @@ class FeedViewController: UIViewController {
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .systemBlue
         button.layer.cornerRadius = 14
+        button.layer.shadowOpacity = 0.7
+        button.layer.shadowOffset = CGSize(width: 4, height: 4)
         button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         return button
     }()
@@ -50,11 +54,13 @@ class FeedViewController: UIViewController {
     }
     
     func addButtonToStackView() {
+        
         stackView.addArrangedSubview(firstButton)
         stackView.addArrangedSubview(twoButton)
     }
 
     func configureStackView() {
+        
         view.addSubview(stackView)
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
@@ -64,6 +70,7 @@ class FeedViewController: UIViewController {
     }
     
     func setStackViewConstrains() {
+        
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
