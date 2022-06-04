@@ -13,14 +13,16 @@ class PostViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view.backgroundColor = .systemCyan
         
+        /// Создание кнопки на Navigation Bar - edit
         let myButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(tapButton))
         navigationItem.title = titlePost
         navigationItem.rightBarButtonItem = myButton
 
     }
-    
+    /// Метод вызова InfoViewController
     @objc func tapButton() {
         let infoViewController = InfoViewController()
         
