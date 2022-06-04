@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		841A33FB2848DA1700EDC31F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841A33FA2848DA1700EDC31F /* LoginViewController.swift */; };
-		841A33FF284BE75800EDC31F /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841A33FE284BE75700EDC31F /* Post.swift */; };
+		841A33FF284BE75800EDC31F /* PostStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841A33FE284BE75700EDC31F /* PostStruct.swift */; };
 		841A3401284BE9E300EDC31F /* PostProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841A3400284BE9E300EDC31F /* PostProtocol.swift */; };
 		841CFCAB2837CC9C00E5EDCF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841CFCAA2837CC9C00E5EDCF /* AppDelegate.swift */; };
 		841CFCAD2837CC9C00E5EDCF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841CFCAC2837CC9C00E5EDCF /* SceneDelegate.swift */; };
 		841CFCB42837CCA400E5EDCF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 841CFCB32837CCA400E5EDCF /* Assets.xcassets */; };
 		841CFCB72837CCA400E5EDCF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 841CFCB52837CCA400E5EDCF /* LaunchScreen.storyboard */; };
-		841CFCC02837FBCE00E5EDCF /* Postik.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841CFCBF2837FBCE00E5EDCF /* Postik.swift */; };
+		841CFCC02837FBCE00E5EDCF /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841CFCBF2837FBCE00E5EDCF /* Post.swift */; };
 		841CFCC22837FC0700E5EDCF /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841CFCC12837FC0700E5EDCF /* FeedViewController.swift */; };
 		841CFCC52837FC3300E5EDCF /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841CFCC42837FC3300E5EDCF /* ProfileViewController.swift */; };
 		841CFCC72837FC4300E5EDCF /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841CFCC62837FC4300E5EDCF /* PostViewController.swift */; };
@@ -25,7 +25,7 @@
 
 /* Begin PBXFileReference section */
 		841A33FA2848DA1700EDC31F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		841A33FE284BE75700EDC31F /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		841A33FE284BE75700EDC31F /* PostStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostStruct.swift; sourceTree = "<group>"; };
 		841A3400284BE9E300EDC31F /* PostProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostProtocol.swift; sourceTree = "<group>"; };
 		841CFCA72837CC9C00E5EDCF /* Navigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Navigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		841CFCAA2837CC9C00E5EDCF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -33,7 +33,7 @@
 		841CFCB32837CCA400E5EDCF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		841CFCB62837CCA400E5EDCF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		841CFCB82837CCA400E5EDCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		841CFCBF2837FBCE00E5EDCF /* Postik.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Postik.swift; sourceTree = "<group>"; };
+		841CFCBF2837FBCE00E5EDCF /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		841CFCC12837FC0700E5EDCF /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		841CFCC42837FC3300E5EDCF /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		841CFCC62837FC4300E5EDCF /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
@@ -77,7 +77,7 @@
 				841CFCC32837FC1400E5EDCF /* Controllers */,
 				841CFCAA2837CC9C00E5EDCF /* AppDelegate.swift */,
 				841CFCAC2837CC9C00E5EDCF /* SceneDelegate.swift */,
-				841A33FE284BE75700EDC31F /* Post.swift */,
+				841A33FE284BE75700EDC31F /* PostStruct.swift */,
 				841A3400284BE9E300EDC31F /* PostProtocol.swift */,
 				841CFCCA2837FC8900E5EDCF /* UITabBar.swift */,
 				841CFCB32837CCA400E5EDCF /* Assets.xcassets */,
@@ -90,7 +90,7 @@
 		841CFCBE2837FBB700E5EDCF /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				841CFCBF2837FBCE00E5EDCF /* Postik.swift */,
+				841CFCBF2837FBCE00E5EDCF /* Post.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -187,14 +187,14 @@
 			files = (
 				841CFCC52837FC3300E5EDCF /* ProfileViewController.swift in Sources */,
 				841A3401284BE9E300EDC31F /* PostProtocol.swift in Sources */,
-				841A33FF284BE75800EDC31F /* Post.swift in Sources */,
+				841A33FF284BE75800EDC31F /* PostStruct.swift in Sources */,
 				841CFCC72837FC4300E5EDCF /* PostViewController.swift in Sources */,
 				841CFCAB2837CC9C00E5EDCF /* AppDelegate.swift in Sources */,
 				841CFCC22837FC0700E5EDCF /* FeedViewController.swift in Sources */,
 				841CFCD02838042500E5EDCF /* ProfileHeaderView.swift in Sources */,
 				841CFCAD2837CC9C00E5EDCF /* SceneDelegate.swift in Sources */,
 				841CFCC92837FC6300E5EDCF /* InfoViewController.swift in Sources */,
-				841CFCC02837FBCE00E5EDCF /* Postik.swift in Sources */,
+				841CFCC02837FBCE00E5EDCF /* Post.swift in Sources */,
 				841CFCCB2837FC8900E5EDCF /* UITabBar.swift in Sources */,
 				841A33FB2848DA1700EDC31F /* LoginViewController.swift in Sources */,
 			);
