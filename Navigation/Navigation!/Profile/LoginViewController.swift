@@ -11,6 +11,7 @@ class LoginViewController: UIViewController {
     
     
     let stack: UIStackView = {
+        
         let stack = UIStackView()
         stack.axis = .vertical
         stack.distribution = .fillEqually
@@ -24,15 +25,19 @@ class LoginViewController: UIViewController {
     }()
     
     private let contentView: UIView = {
+        
         let contentView = UIView()
         contentView.translatesAutoresizingMaskIntoConstraints = false
         return contentView
+        
     }()
 
     let scrollView: UIScrollView = {
+        
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
+        
     }()
 
     
@@ -65,6 +70,7 @@ class LoginViewController: UIViewController {
     }()
     
     private lazy var loginTextfield: UITextField = {
+        
         let logInTextfield = UITextField()
         logInTextfield.textColor = .black
         logInTextfield.backgroundColor = .systemGray6
@@ -82,6 +88,7 @@ class LoginViewController: UIViewController {
     }()
     
    private lazy var passwordTextfield: UITextField = {
+       
         let passTextfield = UITextField()
         passTextfield.textColor = .black
         passTextfield.backgroundColor = .systemGray6
@@ -100,6 +107,7 @@ class LoginViewController: UIViewController {
     }()
     
     let vkLogo: UIImageView = {
+        
         let logoImage = UIImageView()
         logoImage.image = UIImage(named: "vk")
         logoImage.translatesAutoresizingMaskIntoConstraints = false
@@ -111,8 +119,9 @@ class LoginViewController: UIViewController {
         
         view.backgroundColor = .white
         navigationController?.navigationBar.isHidden = true
-        constraints()
+        addElementsAndConstraints()
         self.setupToHideKeyboardOnTapOnView()
+        
     }
     
     @objc private func buttonAction() {
@@ -122,13 +131,14 @@ class LoginViewController: UIViewController {
         
     }
     
-    private func constraints() {
+    private func addElementsAndConstraints() {
         
-        view.backgroundColor = .white
+        
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
-        
+        /// добавляем лого, стэк и кнопку в контентView
         [vkLogo, stack, button].forEach { contentView.addSubview($0) }
+        /// добавляем логин и пароль в стэк
         [loginTextfield, passwordTextfield].forEach { stack.addArrangedSubview($0) }
         
         NSLayoutConstraint.activate([

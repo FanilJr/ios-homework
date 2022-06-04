@@ -19,20 +19,6 @@ class ProfileViewController: UIViewController {
         
     }()
     
-    var newButton: UIButton = {
-       
-     let button = UIButton()
-        button.backgroundColor = .systemBlue
-        button.layer.cornerRadius = 14
-        button.layer.shadowOpacity = 0.7
-        button.setTitle("Change title", for: .normal)
-        button.layer.shadowRadius = 4
-        button.layer.shadowOffset = CGSize(width: 4, height: 4)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(changeButton), for: .touchUpInside)
-        return button
-       
-    }()
     
     
     override func viewDidLoad() {
@@ -44,22 +30,8 @@ class ProfileViewController: UIViewController {
         
     }
     
-    @objc func changeButton() {
-        
-       title = "Profile"
-       print("новое название профиля - \(title ?? "пустой title")")
-        
-    }
     
     func addConstrProfil() {
-       /// добавляем кнопку и задаём констрейнты
-       view.addSubview(newButton)
-        
-       newButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
-       newButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
-       newButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-       newButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        
         /// задаём констрейнты для profil
         profil.translatesAutoresizingMaskIntoConstraints = false
         profil.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true

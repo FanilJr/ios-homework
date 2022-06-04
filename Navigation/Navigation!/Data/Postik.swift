@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Post {
+struct Postik {
     
     var title: String
     
