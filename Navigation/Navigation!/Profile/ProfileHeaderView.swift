@@ -9,24 +9,7 @@ import UIKit
 
 class ProfileHeaderView: UIView {
     
-    
-    
     private var statusText: String = ""
-    
-    /*var newButton: UIButton = {
-        
-      let button = UIButton()
-      button.backgroundColor = .systemBlue
-     button.layer.cornerRadius = 14
-        button.layer.shadowOpacity = 0.7
-        button.setTitle("Change title", for: .normal)
-        button.layer.shadowRadius = 4
-         button.layer.shadowOffset = CGSize(width: 4, height: 4)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(changeButton), for: .touchUpInside)
-        return button
-        
-     }()*/
     
     // MARK: строка ввода статуса
     var textfield: UITextField = {
@@ -104,6 +87,7 @@ class ProfileHeaderView: UIView {
     }()
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         addElementAndAnchors()
     }
     override func layoutSubviews() {
@@ -123,43 +107,30 @@ class ProfileHeaderView: UIView {
         addSubview(titleName)
         addSubview(textStatus)
         addSubview(textfield)
-      //  addSubview(newButton)
         
         myPhoto.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
         myPhoto.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16).isActive = true
-        myPhoto.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        myPhoto.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        myPhoto.widthAnchor.constraint(equalToConstant: 110).isActive = true
+        myPhoto.heightAnchor.constraint(equalToConstant: 110).isActive = true
         
         myButton.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 16).isActive = true
         myButton.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -16).isActive = true
-        myButton.topAnchor.constraint(equalTo: textfield.bottomAnchor, constant: 16).isActive = true
+        myButton.topAnchor.constraint(equalTo: myPhoto.bottomAnchor, constant: 16).isActive = true
         myButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
-        titleName.leftAnchor.constraint(equalTo: myPhoto.rightAnchor, constant: 15).isActive = true
+        titleName.leftAnchor.constraint(equalTo: myPhoto.rightAnchor, constant: 27).isActive = true
         titleName.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16).isActive = true
         titleName.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         textStatus.leftAnchor.constraint(equalTo: myPhoto.rightAnchor, constant: 15).isActive = true
-        textStatus.topAnchor.constraint(equalTo: titleName.bottomAnchor, constant: 16).isActive = true
+        textStatus.topAnchor.constraint(equalTo: titleName.bottomAnchor, constant: 10).isActive = true
         
         textfield.leftAnchor.constraint(equalTo: myPhoto.rightAnchor, constant: 15).isActive = true
         textfield.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant:  -16).isActive = true
         textfield.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        textfield.topAnchor.constraint(equalTo: myPhoto.bottomAnchor,constant: -13).isActive = true
-        
-      /*  newButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 0).isActive = true
-        newButton.rightAnchor.constraint(equalTo: rightAnchor, constant: 0).isActive = true
-        newButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 400).isActive = true
-        newButton.heightAnchor.constraint(equalToConstant: 50).isActive = true*/
+        textfield.topAnchor.constraint(equalTo: titleName.bottomAnchor,constant: 30).isActive = true
         
     }
-    
-   /* @objc func changeButton() {
-        
-        ProfileViewController().title = "Profile"
-        print("новое название профиля - \(ProfileViewController().title ?? "пустой title")")
-        
-   }*/
     
     // MARK: Метод измненения статуса
     @objc func textChanged(_ textField: UITextField) {

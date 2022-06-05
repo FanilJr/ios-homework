@@ -17,7 +17,7 @@ struct PostStruct {
     var views: Int
 
     
-    static func makeModel() -> [PostStruct] {
+    static func massivePost() -> [PostStruct] {
         var post = [PostStruct]()
     
         post.append(PostStruct(author: "Fanil_Jr", description: "Скарлет Йохансон", image: ("Johansson"), likes: 500, views: 501))

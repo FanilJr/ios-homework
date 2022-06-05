@@ -77,7 +77,6 @@ class LoginViewController: UIViewController {
         logInTextfield.autocapitalizationType = .none
         logInTextfield.placeholder = "Email or phone"
         logInTextfield.font = .systemFont(ofSize: 16, weight: .regular)
-        logInTextfield.tintColor = UIColor(named: "VkBlue")
         logInTextfield.translatesAutoresizingMaskIntoConstraints = false
         logInTextfield.borderStyle = .roundedRect
         logInTextfield.layer.borderColor = UIColor.lightGray.cgColor
@@ -95,7 +94,6 @@ class LoginViewController: UIViewController {
         passTextfield.autocapitalizationType = .none
         passTextfield.placeholder = "Password"
         passTextfield.font = .systemFont(ofSize: 16, weight: .regular)
-        passTextfield.tintColor = UIColor(named: "VkBlue")
         passTextfield.isSecureTextEntry = true
         passTextfield.translatesAutoresizingMaskIntoConstraints = false
         passTextfield.borderStyle = .roundedRect
@@ -133,9 +131,9 @@ class LoginViewController: UIViewController {
     
     private func addElementsAndConstraints() {
         
-        
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
+        
         /// добавляем лого, стэк и кнопку в контентView
         [vkLogo, stack, button].forEach { contentView.addSubview($0) }
         /// добавляем логин и пароль в стэк
@@ -218,10 +216,12 @@ extension LoginViewController: UITextFieldDelegate {
 
 //  MARK: - Расширение для клавиатуры - закрытие на нажатие на любое место экрана
 extension UIViewController {
+    
     func setupToHideKeyboardOnTapOnView() {
         
         let recognizer: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
         recognizer.cancelsTouchesInView = false
+        
         view.addGestureRecognizer(recognizer)
         
     }
