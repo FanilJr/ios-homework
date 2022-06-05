@@ -35,6 +35,7 @@ class LoginViewController: UIViewController {
     let scrollView: UIScrollView = {
         
         let scrollView = UIScrollView()
+        
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
         
@@ -118,7 +119,7 @@ class LoginViewController: UIViewController {
         view.backgroundColor = .white
         navigationController?.navigationBar.isHidden = true
         addElementsAndConstraints()
-        self.setupToHideKeyboardOnTapOnView()
+        setupToHideKeyboardOnTapOnView()
         
     }
     
@@ -174,12 +175,12 @@ class LoginViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        notificationCenter.addObserver(self, selector: #selector(kbShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(kbHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(keyboardShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(keyboardbHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
     }
     
-    @objc private func kbShow(notification: NSNotification) {
+    @objc private func keyboardShow(notification: NSNotification) {
         
         if let keyboard = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             scrollView.contentInset.bottom = keyboard.height
@@ -188,7 +189,7 @@ class LoginViewController: UIViewController {
         
     }
     
-    @objc private func kbHide() {
+    @objc private func keyboardbHide() {
         
         scrollView.contentInset = .zero
         scrollView.verticalScrollIndicatorInsets = .zero

@@ -16,7 +16,7 @@ class PostTableViewCell: UITableViewCell {
         
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .white
+        view.backgroundColor = .yellow
         return view
         
     }()
@@ -76,6 +76,7 @@ class PostTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         constraints()
+        contentView.backgroundColor = .systemPink
         
     }
     
