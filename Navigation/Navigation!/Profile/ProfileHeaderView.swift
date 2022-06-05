@@ -87,7 +87,7 @@ class ProfileHeaderView: UIView {
     }()
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+        backgroundColor = .systemGray6
         addElementAndAnchors()
     }
     override func layoutSubviews() {

@@ -15,7 +15,7 @@ class ProfileViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.backgroundColor = .green
+        tableView.backgroundColor = .systemGray6
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "PostTableViewCell")
         return tableView
        
@@ -25,7 +25,6 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .black
         setupTableView()
         
     }
@@ -66,7 +65,6 @@ extension ProfileViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostTableViewCell", for: indexPath) as! PostTableViewCell
-        cell.backgroundColor = .blue
         cell.setupCell(post[indexPath.row])
         return cell
     }
