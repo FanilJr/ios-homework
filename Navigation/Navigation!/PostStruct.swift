@@ -16,8 +16,9 @@ struct PostStruct {
     var likes: Int
     var views: Int
 
-    
+    // MARK: Создаём массив с помощью функции 
     static func massivePost() -> [PostStruct] {
+        
         var post = [PostStruct]()
     
         post.append(PostStruct(author: "Fanil_Jr", description: "Скарлет Йохансон", image: ("Johansson"), likes: 500, views: 501))
@@ -27,5 +28,6 @@ struct PostStruct {
         post.append(PostStruct(author: "Fanil_Jr", description: "Дженифер Энистон", image: ("Aniston"), likes: 3346, views: 5211))
                 
         return post
+        
     }
 }

@@ -9,7 +9,8 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    
+    // MARK: Создаём элементы для вью
+
     let stack: UIStackView = {
         
         let stack = UIStackView()
@@ -23,7 +24,7 @@ class LoginViewController: UIViewController {
         return stack
         
     }()
-    
+
     private let contentView: UIView = {
         
         let contentView = UIView()
@@ -136,38 +137,40 @@ class LoginViewController: UIViewController {
         scrollView.addSubview(contentView)
         
         /// добавляем лого, стэк и кнопку в контентView
+        contentView.addSubview(vkLogo)
+        contentView.addSubview(stack)
+        contentView.addSubview(button)
         [vkLogo, stack, button].forEach { contentView.addSubview($0) }
         /// добавляем логин и пароль в стэк
         [loginTextfield, passwordTextfield].forEach { stack.addArrangedSubview($0) }
         
-        NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+        /// выставляем констрейнты
+        scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
             
-            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+        contentView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
+        contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
+        contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
+        contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
+        contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
             
-            vkLogo.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            vkLogo.heightAnchor.constraint(equalToConstant: 100),
-            vkLogo.widthAnchor.constraint(equalToConstant: 100),
-            vkLogo.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 120),
+        vkLogo.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
+        vkLogo.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        vkLogo.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        vkLogo.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 120).isActive = true
         
-            stack.topAnchor.constraint(equalTo: vkLogo.bottomAnchor, constant: 120),
-            stack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            stack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            stack.heightAnchor.constraint(equalToConstant: 100),
+        stack.topAnchor.constraint(equalTo: vkLogo.bottomAnchor, constant: 120).isActive = true
+        stack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16).isActive = true
+        stack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16).isActive = true
+        stack.heightAnchor.constraint(equalToConstant: 100).isActive = true
        
-            button.topAnchor.constraint(equalTo: stack.bottomAnchor, constant: 16),
-            button.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            button.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            button.heightAnchor.constraint(equalToConstant: 50),
-            button.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
-        ])
+        button.topAnchor.constraint(equalTo: stack.bottomAnchor, constant: 16).isActive = true
+        button.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16).isActive = true
+        button.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16).isActive = true
+        button.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        button.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
         
     }
     
@@ -176,7 +179,7 @@ class LoginViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         notificationCenter.addObserver(self, selector: #selector(keyboardShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(keyboardbHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(keyboardHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
     }
     
@@ -189,7 +192,7 @@ class LoginViewController: UIViewController {
         
     }
     
-    @objc private func keyboardbHide() {
+    @objc private func keyboardHide() {
         
         scrollView.contentInset = .zero
         scrollView.verticalScrollIndicatorInsets = .zero
