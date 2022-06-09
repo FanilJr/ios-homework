@@ -10,12 +10,11 @@ import UIKit
 
 class PostTableViewCell: UITableViewCell {
     
-    let identifier = "PostTableViewCell"
-    
     private lazy var postView: UIView = {
         
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .systemGray5
         return view
         
     }()
@@ -23,7 +22,8 @@ class PostTableViewCell: UITableViewCell {
     private lazy var postImage: UIImageView = {
         
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
+    //  imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.backgroundColor = .black
         return imageView
@@ -81,6 +81,7 @@ class PostTableViewCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+        
     }
     
     func setupCell(_ model: PostStruct) {
@@ -98,7 +99,6 @@ class PostTableViewCell: UITableViewCell {
         [postView, authorName, postImage, descriptionLabel, likes, viewsLabel].forEach { contentView.addSubview($0) }
         
         NSLayoutConstraint.activate([
-            
             
             postView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
             postView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),

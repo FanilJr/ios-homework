@@ -88,7 +88,7 @@ class ProfileHeaderView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .systemGray6
+    //  backgroundColor = .systemGray6
         addElementAndAnchors()
         
     }
@@ -107,28 +107,31 @@ class ProfileHeaderView: UIView {
         addSubview(textStatus)
         addSubview(textfield)
         
-        myPhoto.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
-        myPhoto.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16).isActive = true
-        myPhoto.widthAnchor.constraint(equalToConstant: 110).isActive = true
-        myPhoto.heightAnchor.constraint(equalToConstant: 110).isActive = true
+        NSLayoutConstraint.activate([
+            
+        myPhoto.leftAnchor.constraint(equalTo: leftAnchor, constant: 16),
+        myPhoto.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
+        myPhoto.widthAnchor.constraint(equalToConstant: 110),
+        myPhoto.heightAnchor.constraint(equalToConstant: 110),
         
-        myButton.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 16).isActive = true
-        myButton.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -16).isActive = true
-        myButton.topAnchor.constraint(equalTo: myPhoto.bottomAnchor, constant: 16).isActive = true
-        myButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        myButton.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 16),
+        myButton.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -16),
+        myButton.topAnchor.constraint(equalTo: myPhoto.bottomAnchor, constant: 16),
+        myButton.heightAnchor.constraint(equalToConstant: 50),
         
-        titleName.leftAnchor.constraint(equalTo: myPhoto.rightAnchor, constant: 27).isActive = true
-        titleName.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16).isActive = true
-        titleName.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        titleName.leftAnchor.constraint(equalTo: myPhoto.rightAnchor, constant: 27),
+        titleName.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
+        titleName.heightAnchor.constraint(equalToConstant: 50),
         
-        textStatus.leftAnchor.constraint(equalTo: myPhoto.rightAnchor, constant: 15).isActive = true
-        textStatus.topAnchor.constraint(equalTo: titleName.bottomAnchor, constant: 10).isActive = true
+        textStatus.leftAnchor.constraint(equalTo: myPhoto.rightAnchor, constant: 15),
+        textStatus.topAnchor.constraint(equalTo: titleName.bottomAnchor, constant: 10),
         
-        textfield.leftAnchor.constraint(equalTo: myPhoto.rightAnchor, constant: 15).isActive = true
-        textfield.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant:  -16).isActive = true
-        textfield.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        textfield.topAnchor.constraint(equalTo: titleName.bottomAnchor,constant: 30).isActive = true
+        textfield.leftAnchor.constraint(equalTo: myPhoto.rightAnchor, constant: 15),
+        textfield.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant:  -16),
+        textfield.heightAnchor.constraint(equalToConstant: 40),
+        textfield.topAnchor.constraint(equalTo: titleName.bottomAnchor,constant: 30)
         
+        ])
     }
     
     // MARK: Метод измненения статуса
@@ -146,6 +149,7 @@ class ProfileHeaderView: UIView {
         
         /// анимация:
         UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 2, initialSpringVelocity: 1, options: .curveLinear) {
+            
             self.myButton.bounds = CGRect(x: bounds.origin.x - 30, y: bounds.origin.y, width: bounds.width + 30, height: bounds.height + 10)
             self.myButton.titleLabel?.bounds = CGRect(x: bounds.origin.x, y: bounds.origin.y, width: bounds.width + 100, height: bounds.height)
             self.textStatus.bounds = CGRect(x: bonds.origin.x, y: bonds.origin.y, width: bonds.width + 50, height: bonds.height)

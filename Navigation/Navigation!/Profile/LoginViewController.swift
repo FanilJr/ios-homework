@@ -36,7 +36,6 @@ class LoginViewController: UIViewController {
     let scrollView: UIScrollView = {
         
         let scrollView = UIScrollView()
-        
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
         
@@ -120,7 +119,7 @@ class LoginViewController: UIViewController {
         view.backgroundColor = .white
         navigationController?.navigationBar.isHidden = true
         addElementsAndConstraints()
-        setupToHideKeyboardOnTapOnView()
+        tapScreen()
         
     }
     
@@ -137,9 +136,6 @@ class LoginViewController: UIViewController {
         scrollView.addSubview(contentView)
         
         /// добавляем лого, стэк и кнопку в контентView
-        contentView.addSubview(vkLogo)
-        contentView.addSubview(stack)
-        contentView.addSubview(button)
         [vkLogo, stack, button].forEach { contentView.addSubview($0) }
         /// добавляем логин и пароль в стэк
         [loginTextfield, passwordTextfield].forEach { stack.addArrangedSubview($0) }
@@ -182,14 +178,14 @@ class LoginViewController: UIViewController {
         notificationCenter.addObserver(self, selector: #selector(keyboardHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
     }
-    
+
     @objc private func keyboardShow(notification: NSNotification) {
         
         if let keyboard = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             scrollView.contentInset.bottom = keyboard.height
             scrollView.verticalScrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboard.height, right: 0)
+            
         }
-        
     }
     
     @objc private func keyboardHide() {
@@ -210,6 +206,7 @@ class LoginViewController: UIViewController {
 
 //  MARK: - Расширение для клавиатуры - закрытие на нажатие return
 extension LoginViewController: UITextFieldDelegate {
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         view.endEditing(true)
@@ -221,7 +218,7 @@ extension LoginViewController: UITextFieldDelegate {
 //  MARK: - Расширение для клавиатуры - закрытие на нажатие на любое место экрана
 extension UIViewController {
     
-    func setupToHideKeyboardOnTapOnView() {
+    func tapScreen() {
         
         let recognizer: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
         recognizer.cancelsTouchesInView = false
