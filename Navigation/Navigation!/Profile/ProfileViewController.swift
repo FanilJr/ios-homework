@@ -15,6 +15,7 @@ class ProfileViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.dataSource = self
         tableView.delegate = self
+       tableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: "PhotosTableViewCell")
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "PostTableViewCell")
         return tableView
        
@@ -53,43 +54,45 @@ extension ProfileViewController: UITableViewDelegate {
         
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "hello"
-    }
-    
     /// Отображаем наш HeaderView
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let headerView = ProfileHeaderView()
         headerView.backgroundColor = .systemGray5
-        return headerView
+        return section == 0 ? headerView : nil
         
     }
     
     /// Задаём высоту нашего HeaderView
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
-       return 210;
+        return 210;
         
     }
+    
 }
 
 extension ProfileViewController: UITableViewDataSource {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
     /// Количество ячеек равное количеству данных в массиве
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return post.count
+        return section == 0 ? 1 : post.count
 
     }
     
     /// Переиспользуем ячейку PostTableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PostTableViewCell", for: indexPath) as! PostTableViewCell
-        cell.setupCell(post[indexPath.row])
-        cell.backgroundColor = .systemGray5
-        return cell
-        
+    
+        let cellPhoto = tableView.dequeueReusableCell(withIdentifier: "PhotosTableViewCell", for: indexPath) as! PhotosTableViewCell
+        let cellPost = tableView.dequeueReusableCell(withIdentifier: "PostTableViewCell", for: indexPath) as! PostTableViewCell
+        cellPost.setupCell(post[indexPath.row])
+        cellPost.backgroundColor = .systemGray5
+        return indexPath.section == 0 ? cellPhoto : cellPost
     }
 }
     

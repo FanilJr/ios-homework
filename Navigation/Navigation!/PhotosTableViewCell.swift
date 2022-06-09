@@ -97,8 +97,8 @@ class PhotosTableViewCell: UITableViewCell {
           
       }()
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier identifer: String?) {
-        super.init(style: style, reuseIdentifier: identifer)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         constrPhotosTable()
         

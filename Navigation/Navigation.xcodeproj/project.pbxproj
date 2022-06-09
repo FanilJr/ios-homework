@@ -81,13 +81,13 @@
 				841CFCC32837FC1400E5EDCF /* Controllers */,
 				841CFCAA2837CC9C00E5EDCF /* AppDelegate.swift */,
 				841A3402284BFB1B00EDC31F /* PostTableViewCell.swift */,
+				84E6601828527FC0001A8022 /* PhotosTableViewCell.swift */,
 				841CFCAC2837CC9C00E5EDCF /* SceneDelegate.swift */,
 				841A33FE284BE75700EDC31F /* PostStruct.swift */,
 				841CFCCA2837FC8900E5EDCF /* UITabBar.swift */,
 				841CFCB32837CCA400E5EDCF /* Assets.xcassets */,
 				841CFCB52837CCA400E5EDCF /* LaunchScreen.storyboard */,
 				841CFCB82837CCA400E5EDCF /* Info.plist */,
-				84E6601828527FC0001A8022 /* PhotosTableViewCell.swift */,
 				84E6601A28528476001A8022 /* PhotosStruct.swift */,
 			);
 			path = "Navigation!";
