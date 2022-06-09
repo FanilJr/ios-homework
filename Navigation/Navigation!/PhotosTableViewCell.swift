@@ -112,6 +112,29 @@ class PhotosTableViewCell: UITableViewCell {
         [photo1, photo2, photo3, photo4].forEach { stackView.addArrangedSubview($0) }
         [viewPhoto, label, button, stackView].forEach { contentView.addSubview($0)}
         
+        NSLayoutConstraint.activate([
+            
+            viewPhoto.topAnchor.constraint(equalTo: contentView.topAnchor),
+            viewPhoto.leftAnchor.constraint(equalTo: contentView.leftAnchor),
+            viewPhoto.rightAnchor.constraint(equalTo: contentView.rightAnchor),
+            viewPhoto.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            
+            label.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
+            label.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 12),
+            label.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: 12),
+            label.heightAnchor.constraint(equalToConstant: 30),
+            
+            button.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
+            button.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -12),
+            button.heightAnchor.constraint(equalToConstant: 30),
+            button.widthAnchor.constraint(equalToConstant: 30),
+            
+            stackView.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 12),
+            stackView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 12),
+            stackView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -12),
+            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12)
+            ])
+            
     }
     
     
