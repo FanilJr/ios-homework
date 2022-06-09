@@ -22,6 +22,7 @@ class PostTableViewCell: UITableViewCell {
     private lazy var postImage: UIImageView = {
         
         let imageView = UIImageView()
+    /// Решил поставить картинки в весь рост чтобы лучше было видно этих принцесс
         imageView.contentMode = .scaleAspectFill
     //  imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -74,6 +75,7 @@ class PostTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
         constraints()
         contentView.backgroundColor = .systemGray6
         
