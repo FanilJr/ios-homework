@@ -6,15 +6,16 @@
 //
 
 import Foundation
+import UIKit
 
 struct Photos {
     
     let image: String
     
-    func massivePhoto() -> [Photos] {
+   static func massivePhoto() -> [Photos] {
         
         var photos = [Photos]()
-        let count = 1...21
+        let count = 1...20
         
         for number in count {
             photos.append(Photos(image: "photo_\(number)"))
