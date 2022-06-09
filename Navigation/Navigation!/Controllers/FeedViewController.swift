@@ -11,24 +11,32 @@ class FeedViewController: UIViewController {
     
     
     var post = Post(title: "Мой пост")
+    var stackView = UIStackView()
     
-    /// Кнопка для перехода на пост
-    let postButton: UIButton = {
-        
+    var firstButton: UIButton = {
         let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("first button", for: .normal)
+        button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .systemBlue
         button.layer.cornerRadius = 14
         button.layer.shadowOpacity = 0.7
-        button.layer.shadowRadius = 4
-        button.layer.shadowOffset = CGSize(width: 5, height: 8)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .bold)
-        button.setTitle("Перейти на пост", for: .normal)
-        button.setTitleColor(.white, for: .normal)
+        button.layer.shadowOffset = CGSize(width: 4, height: 4)
         button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         return button
-        
     }()
+    
+    var twoButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("two button", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .systemBlue
+        button.layer.cornerRadius = 14
+        button.layer.shadowOpacity = 0.7
+        button.layer.shadowOffset = CGSize(width: 4, height: 4)
+        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        return button
+    }()
+    
     
     /// Метод перехода на PostViewController
     @objc private func buttonAction() {
@@ -37,21 +45,38 @@ class FeedViewController: UIViewController {
         
         self.navigationController?.pushViewController(postViewController, animated: true)
     }
-    
-    /// Установка констрейнтов кнопки
-    func postButtonConstr() {
-        NSLayoutConstraint.activate([postButton.widthAnchor.constraint(equalToConstant: 300), postButton.heightAnchor.constraint(equalToConstant: 300),
-        postButton.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
-        postButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor)])
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .lightGray
-        view.addSubview(postButton)
-        postButtonConstr()
+        configureStackView()
+    }
     
+    func addButtonToStackView() {
+        
+        stackView.addArrangedSubview(firstButton)
+        stackView.addArrangedSubview(twoButton)
+    }
+
+    func configureStackView() {
+        
+        view.addSubview(stackView)
+        stackView.axis = .vertical
+        stackView.distribution = .fillEqually
+        stackView.spacing = 10
+        addButtonToStackView()
+        setStackViewConstrains()
+    }
+    
+    func setStackViewConstrains() {
+        
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        stackView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 16).isActive = true
+        stackView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -16).isActive = true
+        stackView.heightAnchor.constraint(equalToConstant: 150).isActive = true
     }
     
 }

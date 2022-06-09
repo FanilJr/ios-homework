@@ -33,11 +33,12 @@ class InfoViewController: UIViewController {
         @objc func buttonAlert() {
             let alert = UIAlertController(title: "Внимание", message: "Редактирование запрещено", preferredStyle: .alert)
            let alertOK = UIAlertAction(title: "OK", style: .default, handler: nil)
-           let alertCancel = UIAlertAction(title: "Закрыть", style: .destructive, handler: nil)
+            let alertCancel = UIAlertAction(title: "Закрыть", style: .destructive, handler: {_ in
+                print("проверяем алерт")})
             alert.addAction(alertOK)
             alert.addAction(alertCancel)
             self.present(alert, animated: true, completion: nil)
-            print("проверяем алерт")
+
     }
     
     /// Установка констрейнтов кнопки

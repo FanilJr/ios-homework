@@ -10,7 +10,23 @@ import UIKit
 class ProfileHeaderView: UIView {
     
     
+    
     private var statusText: String = ""
+    
+    /*var newButton: UIButton = {
+        
+      let button = UIButton()
+      button.backgroundColor = .systemBlue
+     button.layer.cornerRadius = 14
+        button.layer.shadowOpacity = 0.7
+        button.setTitle("Change title", for: .normal)
+        button.layer.shadowRadius = 4
+         button.layer.shadowOffset = CGSize(width: 4, height: 4)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(changeButton), for: .touchUpInside)
+        return button
+        
+     }()*/
     
     // MARK: строка ввода статуса
     var textfield: UITextField = {
@@ -36,13 +52,14 @@ class ProfileHeaderView: UIView {
         
         let fotka = UIImageView()
         fotka.clipsToBounds = true
-        fotka.frame = CGRect(x: 16, y: 16, width: 120, height: 120)
+        fotka.frame = CGRect(x: 16, y: 16, width: 100, height: 100)
         fotka.image = UIImage(named: "1")
         fotka.layer.cornerRadius = fotka.frame.width / 2
         fotka.layer.borderWidth = 3
         fotka.layer.borderColor = CGColor(gray: 5, alpha: 5)
         fotka.translatesAutoresizingMaskIntoConstraints = false
         return fotka
+        
     }()
         
     // MARK: Имя профиля
@@ -55,6 +72,7 @@ class ProfileHeaderView: UIView {
         name.textColor = .black
         name.translatesAutoresizingMaskIntoConstraints = false
         return name
+        
     }()
     
     // MARK: Статус
@@ -66,6 +84,7 @@ class ProfileHeaderView: UIView {
         opisanie.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         opisanie.translatesAutoresizingMaskIntoConstraints = false
         return opisanie
+        
     }()
     
     // MARK: Кнопка Set status
@@ -81,25 +100,24 @@ class ProfileHeaderView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(buttonPresset), for: .touchUpInside)
         return button
+        
     }()
     
-    // MARK: Добавляем элементы на view
-    func addElements() {
+
+    // MARK: Добавляем элементы на view и настраиваем констрейнты
+    func addElementAndAnchors() {
         
         addSubview(myPhoto)
         addSubview(myButton)
         addSubview(titleName)
         addSubview(textStatus)
         addSubview(textfield)
-    }
-    
-    // MARK: Настраиваем констрейнты
-    func anchors() {
+      //  addSubview(newButton)
         
-        myPhoto.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 16).isActive = true
+        myPhoto.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
         myPhoto.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16).isActive = true
-        myPhoto.widthAnchor.constraint(equalToConstant: 120).isActive = true
-        myPhoto.heightAnchor.constraint(equalToConstant: 120).isActive = true
+        myPhoto.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        myPhoto.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
         myButton.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 16).isActive = true
         myButton.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -16).isActive = true
@@ -107,7 +125,7 @@ class ProfileHeaderView: UIView {
         myButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         titleName.leftAnchor.constraint(equalTo: myPhoto.rightAnchor, constant: 15).isActive = true
-        titleName.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 27).isActive = true
+        titleName.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16).isActive = true
         titleName.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         textStatus.leftAnchor.constraint(equalTo: myPhoto.rightAnchor, constant: 15).isActive = true
@@ -116,9 +134,21 @@ class ProfileHeaderView: UIView {
         textfield.leftAnchor.constraint(equalTo: myPhoto.rightAnchor, constant: 15).isActive = true
         textfield.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant:  -16).isActive = true
         textfield.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        textfield.topAnchor.constraint(equalTo: myPhoto.bottomAnchor,constant: -16).isActive = true
+        textfield.topAnchor.constraint(equalTo: myPhoto.bottomAnchor,constant: -13).isActive = true
+        
+      /*  newButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 0).isActive = true
+        newButton.rightAnchor.constraint(equalTo: rightAnchor, constant: 0).isActive = true
+        newButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 400).isActive = true
+        newButton.heightAnchor.constraint(equalToConstant: 50).isActive = true*/
         
     }
+    
+   /* @objc func changeButton() {
+        
+        ProfileViewController().title = "Profile"
+        print("новое название профиля - \(ProfileViewController().title ?? "пустой title")")
+        
+   }*/
     
     // MARK: Метод измненения статуса
     @objc func textChanged(_ textField: UITextField) {
@@ -138,6 +168,7 @@ class ProfileHeaderView: UIView {
             self.myButton.bounds = CGRect(x: bounds.origin.x - 30, y: bounds.origin.y, width: bounds.width + 30, height: bounds.height + 10)
             self.myButton.titleLabel?.bounds = CGRect(x: bounds.origin.x, y: bounds.origin.y, width: bounds.width + 100, height: bounds.height)
             self.textStatus.bounds = CGRect(x: bonds.origin.x, y: bonds.origin.y, width: bonds.width + 50, height: bonds.height)
+            
         }
         
         /// установка статуса и сброс строки ввода статуса
@@ -148,7 +179,7 @@ class ProfileHeaderView: UIView {
             statusText = ""
             
         }
-        
+
         /// проверка статуса пользователя
         if textStatus.text == "" {
             print("у пользователя \(titleName.text!) - пустой статус")

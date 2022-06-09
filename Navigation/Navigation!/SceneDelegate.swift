@@ -41,10 +41,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         UITabBar.setTransparentTabbar()
         UIBarButtonItem.appearance().tintColor = .black
     
-        tabBarController.viewControllers = [createFeedViewController(),createProfileViewController()]
+        tabBarController.viewControllers = [createFeedViewController(), createProfileViewController()]
         
         return tabBarController
         
+    }
+    func createLoginViewController() -> UINavigationController {
+        
+        let loginViewController = LoginViewController()
+        loginViewController.tabBarItem = UITabBarItem(title: "Профиль", image: UIImage(systemName: "person.circle"), tag: 1)
+        
+        return UINavigationController(rootViewController: loginViewController)
     }
     
     func createFeedViewController() -> UINavigationController {
