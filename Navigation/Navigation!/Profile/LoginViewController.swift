@@ -141,32 +141,35 @@ class LoginViewController: UIViewController {
         [loginTextfield, passwordTextfield].forEach { stack.addArrangedSubview($0) }
         
         /// выставляем констрейнты
-        scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        NSLayoutConstraint.activate([
+        scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+        scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+        scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+        scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             
-        contentView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
-        contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
-        contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
-        contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
-        contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+        contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+        contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+        contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+        contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+        contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             
-        vkLogo.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
-        vkLogo.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        vkLogo.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        vkLogo.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 120).isActive = true
+        vkLogo.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+        vkLogo.heightAnchor.constraint(equalToConstant: 100),
+        vkLogo.widthAnchor.constraint(equalToConstant: 100),
+        vkLogo.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 120),
         
-        stack.topAnchor.constraint(equalTo: vkLogo.bottomAnchor, constant: 120).isActive = true
-        stack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16).isActive = true
-        stack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16).isActive = true
-        stack.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        stack.topAnchor.constraint(equalTo: vkLogo.bottomAnchor, constant: 120),
+        stack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+        stack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+        stack.heightAnchor.constraint(equalToConstant: 100),
        
-        button.topAnchor.constraint(equalTo: stack.bottomAnchor, constant: 16).isActive = true
-        button.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16).isActive = true
-        button.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16).isActive = true
-        button.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        button.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+        button.topAnchor.constraint(equalTo: stack.bottomAnchor, constant: 16),
+        button.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+        button.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+        button.heightAnchor.constraint(equalToConstant: 50),
+        button.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+        
+        ])
         
     }
     

@@ -53,6 +53,10 @@ extension ProfileViewController: UITableViewDelegate {
         
     }
     
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "hello"
+    }
+    
     /// Отображаем наш HeaderView
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
