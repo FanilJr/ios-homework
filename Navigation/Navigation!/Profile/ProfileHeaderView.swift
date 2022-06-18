@@ -11,151 +11,124 @@ class ProfileHeaderView: UIView {
     
     private var statusText: String = ""
     
-    // MARK: строка ввода статуса
-    var textfield: UITextField = {
+    // MARK: - Создание объектов
         
-        var textfields = UITextField()
-        textfields.placeholder = "Enter text"
-        textfields.backgroundColor = .white
-        textfields.layer.cornerRadius = 12
-        textfields.layer.borderWidth = 1
-        textfields.layer.borderColor = CGColor(genericCMYKCyan: 10, magenta: 10, yellow: 10, black: 10, alpha: 10)
-        textfields.textColor = .black
-        textfields.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
-        textfields.leftViewMode = .always
-        textfields.font = UIFont.systemFont(ofSize: 15, weight: .regular)
-        textfields.translatesAutoresizingMaskIntoConstraints = false
-        textfields.addTarget(self, action: #selector(textChanged), for: .editingChanged)
-        return textfields
+        private let avatarImageView: UIImageView = {
+            let avatarImageView = UIImageView()
+            avatarImageView.image = UIImage(named: "1")
+            avatarImageView.layer.borderWidth = 3
+            avatarImageView.layer.borderColor = UIColor.white.cgColor
+            avatarImageView.layer.cornerRadius = 60
+            avatarImageView.clipsToBounds = true
+            avatarImageView.translatesAutoresizingMaskIntoConstraints = false
+            return avatarImageView
+        }()
         
-    }()
-  
-    // MARK: Фотография
-    var myPhoto: UIImageView = {
+        private let fullNameLabel: UILabel = {
+            let fullNameLabel = UILabel()
+            fullNameLabel.text = "Fanil_Jr"
+            fullNameLabel.textColor = .black
+            fullNameLabel.font = .systemFont(ofSize: 18, weight: .bold)
+            fullNameLabel.translatesAutoresizingMaskIntoConstraints = false
+            return fullNameLabel
+        }()
         
-        let fotka = UIImageView()
-        fotka.clipsToBounds = true
-        fotka.frame = CGRect(x: 16, y: 16, width: 100, height: 100)
-        fotka.image = UIImage(named: "1")
-        fotka.layer.cornerRadius = fotka.frame.width / 2
-        fotka.layer.borderWidth = 3
-        fotka.layer.borderColor = CGColor(gray: 5, alpha: 5)
-        fotka.translatesAutoresizingMaskIntoConstraints = false
-        return fotka
+        private let statusLabel: UILabel = {
+            let statusLabel = UILabel()
+            statusLabel.text = "Waiting for something..."
+            statusLabel.textColor = .gray
+            statusLabel.font = .systemFont(ofSize: 14, weight: .regular)
+            statusLabel.translatesAutoresizingMaskIntoConstraints = false
+            return statusLabel
+        }()
         
-    }()
+        private let statusTextField: UITextField = {
+            let statusTextField = UITextField()
+            statusTextField.placeholder = "Введите статус"
+            statusTextField.textColor = .black
+            statusTextField.font = .systemFont(ofSize: 15, weight: .regular)
+            statusTextField.borderStyle = .roundedRect
+            statusTextField.translatesAutoresizingMaskIntoConstraints = false
+            statusTextField.layer.borderWidth = 1
+            statusTextField.layer.borderColor = UIColor.black.cgColor
+            statusTextField.layer.cornerRadius = 12
+            statusTextField.layer.backgroundColor = UIColor.white.cgColor
+            return statusTextField
+        }()
         
-    // MARK: Имя профиля
-    var titleName: UILabel = {
+        private let stackView: UIStackView = {
+            let stackView = UIStackView()
+            stackView.axis = .vertical
+            stackView.spacing = 10
+            stackView.distribution = .fillEqually
+            stackView.translatesAutoresizingMaskIntoConstraints = false
+            return stackView
+        }()
         
-        let name = UILabel()
-        name.text = "Fanil_JR"
-        name.font = UIFont.systemFont(ofSize: 18, weight: .bold)
-        name.tintColor = .black
-        name.textColor = .black
-        name.translatesAutoresizingMaskIntoConstraints = false
-        return name
+        private let setStatusButton: UIButton = {
+            let setStatusButton = UIButton()
+            setStatusButton.setTitle("Set status", for: .normal)
+            setStatusButton.setTitleColor(.white, for: .normal)
+            setStatusButton.layer.cornerRadius = 12
+            setStatusButton.backgroundColor = .systemBlue
+            setStatusButton.layer.shadowOffset = CGSize(width: 4, height: 4)
+            setStatusButton.layer.shadowRadius = 4
+            setStatusButton.layer.shadowColor = UIColor.black.cgColor
+            setStatusButton.layer.shadowOpacity = 0.7
+            setStatusButton.translatesAutoresizingMaskIntoConstraints = false
+            return setStatusButton
+        }()
+         
+        // MARK: - Настройка объектов
         
-    }()
-    
-    // MARK: Статус
-    var textStatus: UILabel = {
-        
-        let opisanie = UILabel()
-        opisanie.text = "Waiting for something..."
-        opisanie.textColor = .gray
-        opisanie.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-        opisanie.translatesAutoresizingMaskIntoConstraints = false
-        return opisanie
-        
-    }()
-    
-    // MARK: Кнопка Set status
-    var myButton: UIButton = {
-        
-        var button = UIButton()
-        button.backgroundColor = .systemBlue
-        button.layer.cornerRadius = 14
-        button.layer.shadowOpacity = 0.7
-        button.setTitle("Set status", for: .normal)
-        button.layer.shadowRadius = 4
-        button.layer.shadowOffset = CGSize(width: 4, height: 4)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(buttonPresset), for: .touchUpInside)
-        return button
-        
-    }()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    //  backgroundColor = .systemGray6
-        addElementAndAnchors()
-        
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
+        private func setupPHView() {
+            [avatarImageView, stackView, setStatusButton].forEach { addSubview($0) }
+            [fullNameLabel, statusLabel, statusTextField].forEach { stackView.addArrangedSubview($0) }
+             
+            setStatusButton.addTarget(self, action: #selector(tap), for: .touchUpInside)
+            
+            let constr: CGFloat = 16
+            let photoConstr: CGFloat = 120
 
-    // MARK: Добавляем элементы на view и настраиваем констрейнты
-    func addElementAndAnchors() {
-        
-        addSubview(myPhoto)
-        addSubview(myButton)
-        addSubview(titleName)
-        addSubview(textStatus)
-        addSubview(textfield)
-        
-        NSLayoutConstraint.activate([
-            
-        myPhoto.leftAnchor.constraint(equalTo: leftAnchor, constant: 16),
-        myPhoto.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
-        myPhoto.widthAnchor.constraint(equalToConstant: 110),
-        myPhoto.heightAnchor.constraint(equalToConstant: 110),
-        
-        myButton.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 16),
-        myButton.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -16),
-        myButton.topAnchor.constraint(equalTo: myPhoto.bottomAnchor, constant: 16),
-        myButton.heightAnchor.constraint(equalToConstant: 50),
-        
-        titleName.leftAnchor.constraint(equalTo: myPhoto.rightAnchor, constant: 27),
-        titleName.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
-        titleName.heightAnchor.constraint(equalToConstant: 50),
-        
-        textStatus.leftAnchor.constraint(equalTo: myPhoto.rightAnchor, constant: 15),
-        textStatus.topAnchor.constraint(equalTo: titleName.bottomAnchor, constant: 10),
-        
-        textfield.leftAnchor.constraint(equalTo: myPhoto.rightAnchor, constant: 15),
-        textfield.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant:  -16),
-        textfield.heightAnchor.constraint(equalToConstant: 40),
-        textfield.topAnchor.constraint(equalTo: titleName.bottomAnchor,constant: 30)
-        
-        ])
-    }
-    
-    // MARK: Метод измненения статуса
-    @objc func textChanged(_ textField: UITextField) {
-        
-        statusText = textfield.text ?? "Empty"
-        
-    }
-    
-    // MARK: Нажатие кнопки с анимацией и сброс строки ввода статуса на placeholder "Enter text"
-    @objc func buttonPresset() {
-        
-        let bounds = myButton.bounds
-        let bonds = textStatus.bounds
-        
-        /// анимация:
-        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 2, initialSpringVelocity: 1, options: .curveLinear) {
-            
-            self.myButton.bounds = CGRect(x: bounds.origin.x - 30, y: bounds.origin.y, width: bounds.width + 30, height: bounds.height + 10)
-            self.myButton.titleLabel?.bounds = CGRect(x: bounds.origin.x, y: bounds.origin.y, width: bounds.width + 100, height: bounds.height)
-            self.textStatus.bounds = CGRect(x: bonds.origin.x, y: bonds.origin.y, width: bonds.width + 50, height: bonds.height)
-            
+            NSLayoutConstraint.activate([
+                avatarImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
+                avatarImageView.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: constr),
+                avatarImageView.heightAnchor.constraint(equalToConstant: photoConstr),
+                avatarImageView.widthAnchor.constraint(equalToConstant: photoConstr),
+                
+                stackView.topAnchor.constraint(equalTo: avatarImageView.topAnchor),
+                stackView.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: constr),
+                stackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -constr),
+                stackView.bottomAnchor.constraint(equalTo: avatarImageView.bottomAnchor),
+                
+                setStatusButton.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: constr),
+                setStatusButton.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: constr),
+                setStatusButton.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -constr),
+                setStatusButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -constr),
+                setStatusButton.heightAnchor.constraint(equalToConstant: 50)
+            ])
         }
         
+    //    MARK: - Настройка кнопки
+        
+        @objc private func tap() {
+            statusLabel.text = statusTextField.text
+            statusTextField.text = ""
+            print("Статус установлен")
+        }
+        
+    //    MARK: - Инициализатор
+        
+        override init(frame: CGRect) {
+            super.init(frame: frame)
+            setupPHView()
+        }
+        
+        required init?(coder: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
+        }
+}
+        /*
         /// установка статуса и сброс строки ввода статуса
         textStatus.text = statusText
         textfield.text = ""
@@ -175,5 +148,5 @@ class ProfileHeaderView: UIView {
         }
     }
 }
-
+*/
   
