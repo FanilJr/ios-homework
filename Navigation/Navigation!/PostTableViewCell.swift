@@ -14,7 +14,7 @@ class PostTableViewCell: UITableViewCell {
         
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .systemGray5
+        view.backgroundColor = .systemGray6
         return view
         
     }()
@@ -23,8 +23,8 @@ class PostTableViewCell: UITableViewCell {
         
         let imageView = UIImageView()
     /// Решил поставить картинки в весь рост чтобы лучше было видно этих принцесс
-        imageView.contentMode = .scaleAspectFill
-    //  imageView.contentMode = .scaleAspectFit
+        //imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.backgroundColor = .black
         return imageView
@@ -77,7 +77,7 @@ class PostTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         constraints()
-        contentView.backgroundColor = .systemGray6
+        contentView.backgroundColor = .white
         
     }
     
