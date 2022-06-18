@@ -9,68 +9,83 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
-    
-    lazy var profil: ProfileHeaderView = {
+   private lazy var tableView: UITableView = {
         
-        let profile = ProfileHeaderView()
-        profile.backgroundColor = .lightGray
-        profile.addElementAndAnchors()
-        return profile
-        
-    }()
-    
-    var newButton: UIButton = {
-       
-     let button = UIButton()
-        button.backgroundColor = .systemBlue
-        button.layer.cornerRadius = 14
-        button.layer.shadowOpacity = 0.7
-        button.setTitle("Change title", for: .normal)
-        button.layer.shadowRadius = 4
-        button.layer.shadowOffset = CGSize(width: 4, height: 4)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(changeButton), for: .touchUpInside)
-        return button
+        let tableView = UITableView(frame: .zero, style: .grouped)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "PostTableViewCell")
+        return tableView
        
     }()
     
+    /// Создаём свойство, которое принимает функцию массива
+    private let post = PostStruct.massivePost()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .lightGray
-        view.addSubview(profil)
-        addConstrProfil()
-
+        setupTableView()
         
     }
     
-    @objc func changeButton() {
+    func setupTableView() {
         
-       title = "Profile"
-       print("новое название профиля - \(title ?? "пустой title")")
+        view.addSubview(tableView)
         
-    }
-    
-    func addConstrProfil() {
-       /// добавляем кнопку и задаём констрейнты
-       view.addSubview(newButton)
+        NSLayoutConstraint.activate([
+            
+        tableView.topAnchor.constraint(equalTo: view.topAnchor),
+        tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+        tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         
-       newButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
-       newButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
-       newButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-       newButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        
-        /// задаём констрейнты для profil
-        profil.translatesAutoresizingMaskIntoConstraints = false
-        profil.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
-        profil.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
-        profil.heightAnchor.constraint(equalToConstant: 220).isActive = true
-        profil.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        
-    }
-    
-   override func viewWillLayoutSubviews() {
-       super.viewWillLayoutSubviews()
-      
+        ])
     }
 }
+
+extension ProfileViewController: UITableViewDelegate {
+    
+    /// значение по умолчанию для высоты ячеек
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        UITableView.automaticDimension
+        
+    }
+    
+    /// Отображаем наш HeaderView
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let headerView = ProfileHeaderView()
+        headerView.backgroundColor = .systemGray5
+        return headerView
+        
+    }
+    
+    /// Задаём высоту нашего HeaderView
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
+       return 210;
+        
+    }
+}
+
+extension ProfileViewController: UITableViewDataSource {
+    
+    /// Количество ячеек равное количеству данных в массиве
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return post.count
+
+    }
+    
+    /// Переиспользуем ячейку PostTableView
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PostTableViewCell", for: indexPath) as! PostTableViewCell
+        cell.setupCell(post[indexPath.row])
+        cell.backgroundColor = .systemGray5
+        return cell
+        
+    }
+}
+    

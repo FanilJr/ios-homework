@@ -10,7 +10,7 @@ import UIKit
 class FeedViewController: UIViewController {
     
     
-    var post = Post(title: "Мой пост")
+    var post = Postik(title: "Мой пост")
     var stackView = UIStackView()
     
     var firstButton: UIButton = {
