@@ -15,8 +15,9 @@ class ProfileViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.dataSource = self
         tableView.delegate = self
-       tableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: "PhotosTableViewCell")
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "PostTableViewCell")
+       tableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: "PhotosTableViewCell")
+       tableView.backgroundColor = .systemGray6
         return tableView
        
     }()
@@ -45,54 +46,54 @@ class ProfileViewController: UIViewController {
     }
 }
 
-extension ProfileViewController: UITableViewDelegate {
-    
-    /// значение по умолчанию для высоты ячеек
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        UITableView.automaticDimension
-        
-    }
-    
-    /// Отображаем наш HeaderView
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
-        let headerView = ProfileHeaderView()
-        headerView.backgroundColor = .systemGray5
-        return section == 0 ? headerView : nil
-        
-    }
-    
-    /// Задаём высоту нашего HeaderView
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        
-        return 210;
-        
-    }
-    
-}
-
+//    MARK: - Расширение UITableViewDataSource
 extension ProfileViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
     
-    /// Количество ячеек равное количеству данных в массиве
+//    В зависимости от секции возвращает необхобимое количество ячеек
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return section == 0 ? 1 : post.count
-
     }
     
-    /// Переиспользуем ячейку PostTableView
+//    В зависимости от секции возвращает необходимый тип ячейки
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-    
-        let cellPhoto = tableView.dequeueReusableCell(withIdentifier: "PhotosTableViewCell", for: indexPath) as! PhotosTableViewCell
-        let cellPost = tableView.dequeueReusableCell(withIdentifier: "PostTableViewCell", for: indexPath) as! PostTableViewCell
-        cellPost.setupCell(post[indexPath.row])
-        cellPost.backgroundColor = .systemGray5
-        return indexPath.section == 0 ? cellPhoto : cellPost
+        let cell1 = tableView.dequeueReusableCell(withIdentifier: "PhotosTableViewCell", for: indexPath) as! PhotosTableViewCell
+        let cell2 = tableView.dequeueReusableCell(withIdentifier: "PostTableViewCell", for: indexPath) as! PostTableViewCell
+        cell2.setupCell(post[indexPath.row])
+        return indexPath.section == 0 ? cell1 : cell2
     }
 }
+
+
+//    MARK: - Расширение UITableViewDelegate
+extension ProfileViewController: UITableViewDelegate {
     
+//    Возвращаем динамическую высоту ячейки
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        UITableView.automaticDimension
+    }
+    
+//    Возвращаем хедер - наш HeaderView
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let PHView = ProfileHeaderView()
+        return section == 0 ? PHView : nil
+    }
+    
+//    Возвращаем необходимую высоту хедера
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return section == 0 ? UITableView.automaticDimension : 0
+        
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let galleryVC = PhotosViewController()
+        //galleryVC.title = "Photo Gallery"
+        
+        
+        indexPath.section == 0 ? navigationController?.pushViewController(galleryVC, animated: true) : nil
+    }
+}

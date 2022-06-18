@@ -17,6 +17,8 @@ extension UITabBar {
         UITabBar.appearance().backgroundImage = UIImage()
         UITabBar.appearance().shadowImage     = UIImage()
         UITabBar.appearance().clipsToBounds   = true
+        UITabBar.appearance().barTintColor = UIColor.clear
+        UITabBar.appearance().isTranslucent = true
         
     }
 }
